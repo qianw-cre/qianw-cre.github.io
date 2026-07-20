@@ -4,231 +4,490 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Personal homepage of Qian Wang">
-  <meta name="theme-color" content="#f5f3ee">
+  <meta name="theme-color" content="#0a192f">
   <title>Qian Wang</title>
   <style>
     :root {
-      color-scheme: light;
-      --paper: #f5f3ee;
-      --ink: #1d1d1b;
-      --muted: #6d6b65;
-      --line: #d9d6ce;
-      --accent: #285f4a;
-      --white: #fff;
+      color-scheme: dark;
+      --navy: #0a192f;
+      --navy-light: #112240;
+      --navy-lighter: #1b3152;
+      --slate: #8892b0;
+      --light-slate: #a8b2d1;
+      --lightest: #ccd6f6;
+      --green: #64ffda;
+      --header: rgba(10, 25, 47, .86);
+      --shadow: 0 18px 50px rgba(2, 12, 27, .6);
     }
 
     * { box-sizing: border-box; }
 
-    html { min-height: 100%; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
-      min-height: 100svh;
-      color: var(--ink);
+      color: var(--slate);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        linear-gradient(rgba(29, 29, 27, .026) 1px, transparent 1px),
-        var(--paper);
-      background-size: 100% 56px;
+        radial-gradient(circle at 85% 10%, rgba(100, 255, 218, .045), transparent 28rem),
+        var(--navy);
     }
 
-    .site {
-      width: min(920px, calc(100% - 48px));
-      min-height: 100vh;
-      min-height: 100svh;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
+    ::selection {
+      color: var(--lightest);
+      background: rgba(100, 255, 218, .22);
     }
 
-    header {
-      height: 88px;
+    a { color: inherit; }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--line);
+      padding: 0 clamp(24px, 4vw, 56px);
+      background: var(--header);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(136, 146, 176, .08);
     }
 
-    .mark {
-      display: inline-grid;
+    .logo {
+      display: grid;
       place-items: center;
-      width: 38px;
-      height: 38px;
-      border: 1px solid var(--ink);
-      border-radius: 50%;
-      color: var(--ink);
-      font-size: .78rem;
-      font-weight: 750;
-      letter-spacing: -.03em;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--green);
+      border-radius: 8px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .82rem;
+      font-weight: 700;
       text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
     }
 
-    nav {
+    .logo:hover {
+      transform: translateY(-2px);
+      background: rgba(100, 255, 218, .07);
+    }
+
+    .topnav {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: clamp(18px, 3vw, 34px);
     }
 
-    nav a {
-      color: var(--muted);
-      font-size: .86rem;
+    .topnav a {
+      color: var(--lightest);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .78rem;
       text-decoration: none;
-      transition: color .18s ease;
+      transition: color .2s ease;
     }
 
-    nav a:hover { color: var(--ink); }
+    .topnav a span {
+      margin-right: 5px;
+      color: var(--green);
+    }
 
-    main {
-      flex: 1;
+    .topnav a:hover { color: var(--green); }
+
+    .side {
+      position: fixed;
+      z-index: 10;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--light-slate);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .7rem;
+      letter-spacing: .08em;
+      writing-mode: vertical-rl;
+    }
+
+    .side::after {
+      content: "";
+      width: 1px;
+      height: 88px;
+      background: var(--light-slate);
+    }
+
+    .side-left { left: 32px; }
+    .side-right { right: 32px; }
+
+    .side a {
+      text-decoration: none;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .side a:hover {
+      color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .shell {
+      width: min(1000px, calc(100% - 160px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
       display: grid;
       align-content: center;
-      padding: 88px 0 104px;
+      padding: 128px 0 80px;
     }
 
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 24px;
-      color: var(--accent);
-      font-size: .76rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: currentColor;
+    .kicker {
+      margin: 0 0 20px 2px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .9rem;
     }
 
     h1 {
-      max-width: 720px;
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.5rem, 5vw, 3.25rem);
-      font-weight: 500;
-      line-height: 1.1;
-      letter-spacing: -.035em;
+      color: var(--lightest);
+      font-size: clamp(2.8rem, 6vw, 3.55rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
     }
 
-    .intro {
-      max-width: 590px;
+    .hero h2 {
+      max-width: 780px;
+      margin: 12px 0 0;
+      color: var(--light-slate);
+      font-size: clamp(1.65rem, 4vw, 2.45rem);
+      line-height: 1.18;
+      letter-spacing: -.03em;
+    }
+
+    .hero-copy {
+      max-width: 610px;
       margin: 26px 0 0;
-      color: var(--muted);
-      font-size: clamp(1rem, 1.8vw, 1.12rem);
+      font-size: 1rem;
       line-height: 1.75;
     }
 
-    .contact {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 28px;
-      align-items: start;
-      max-width: 720px;
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 50px;
+      margin-top: 34px;
+      padding: 0 22px;
+      border: 1px solid var(--green);
+      border-radius: 5px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .82rem;
+      text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
     }
 
-    .contact-label {
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: .76rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+    .cta:hover {
+      transform: translateY(-3px);
+      background: rgba(100, 255, 218, .08);
     }
 
-    .links {
+    section {
+      padding: 110px 0;
+    }
+
+    .section-title {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px 28px;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 42px;
+      color: var(--lightest);
+      font-size: 1.55rem;
+      letter-spacing: -.02em;
     }
 
-    .links a {
-      position: relative;
-      color: var(--ink);
-      font-size: .96rem;
-      font-weight: 600;
+    .section-title span {
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .88rem;
+      font-weight: 400;
+    }
+
+    .section-title::after {
+      content: "";
+      width: min(280px, 28vw);
+      height: 1px;
+      margin-left: 6px;
+      background: var(--navy-lighter);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      margin: 0 0 18px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .accent-link {
+      color: var(--green);
       text-decoration: none;
     }
 
-    .links a::after {
-      content: "↗";
-      margin-left: 7px;
-      color: var(--accent);
-      font-size: .82em;
+    .accent-link:hover { text-decoration: underline; }
+
+    .identity-card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(100, 255, 218, .16);
+      border-radius: 8px;
+      background: var(--navy-light);
+      box-shadow: var(--shadow);
     }
 
-    .links a.email::after { content: "→"; }
-
-    .links a:hover { color: var(--accent); }
-
-    a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 5px;
-      border-radius: 2px;
+    .identity-card::before {
+      content: "QW";
+      position: absolute;
+      top: -16px;
+      right: -8px;
+      color: rgba(100, 255, 218, .055);
+      font-size: 6rem;
+      font-weight: 800;
+      line-height: 1;
     }
+
+    .identity-card dl {
+      position: relative;
+      margin: 0;
+    }
+
+    .identity-card div + div {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(136, 146, 176, .13);
+    }
+
+    dt {
+      margin-bottom: 7px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+    }
+
+    dd {
+      margin: 0;
+      color: var(--lightest);
+      font-size: .98rem;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .profile-card {
+      min-height: 230px;
+      padding: 28px 24px;
+      border-radius: 7px;
+      background: var(--navy-light);
+      box-shadow: 0 10px 30px rgba(2, 12, 27, .34);
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-7px);
+      background: #152845;
+    }
+
+    .profile-card .number {
+      display: block;
+      margin-bottom: 44px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .72rem;
+    }
+
+    .profile-card h3 {
+      margin: 0 0 12px;
+      color: var(--lightest);
+      font-size: 1.08rem;
+    }
+
+    .profile-card p {
+      margin: 0;
+      font-size: .9rem;
+      line-height: 1.65;
+    }
+
+    .contact-section {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 150px 0 170px;
+      text-align: center;
+    }
+
+    .contact-section .overline {
+      margin: 0 0 18px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .82rem;
+    }
+
+    .contact-section h2 {
+      margin: 0;
+      color: var(--lightest);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+    }
+
+    .contact-section p {
+      margin: 20px auto 0;
+      line-height: 1.75;
+    }
+
+    .contact-section .cta { margin-inline: auto; }
 
     footer {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: .76rem;
+      padding: 24px;
+      color: var(--slate);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .7rem;
+      text-align: center;
     }
 
-    @media (max-width: 620px) {
-      .site { width: min(100% - 36px, 920px); }
-      header { height: 76px; }
-      nav { gap: 18px; }
-      main { padding: 72px 0 84px; }
-      h1 { font-size: clamp(2.35rem, 12vw, 2.8rem); }
-      .contact {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        margin-top: 50px;
-      }
-      .links { flex-direction: column; align-items: flex-start; }
-      footer { align-items: flex-start; flex-direction: column; justify-content: center; padding: 18px 0; }
+    a:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 5px;
+    }
+
+    @media (max-width: 900px) {
+      .shell { width: min(100% - 96px, 1000px); }
+      .side { display: none; }
+      .about-grid { gap: 36px; }
+      .profile-grid { grid-template-columns: 1fr; }
+      .profile-card { min-height: auto; }
+      .profile-card .number { margin-bottom: 28px; }
+    }
+
+    @media (max-width: 650px) {
+      .topbar { height: 72px; padding: 0 20px; }
+      .logo { width: 40px; height: 40px; }
+      .topnav a span { display: none; }
+      .topnav { gap: 14px; }
+      .shell { width: min(100% - 44px, 1000px); }
+      .hero { padding-top: 112px; }
+      h1 { font-size: clamp(2.5rem, 13vw, 3rem); }
+      .hero h2 { font-size: 1.65rem; }
+      section { padding: 84px 0; }
+      .about-grid { grid-template-columns: 1fr; }
+      .section-title::after { flex: 1; }
+      .contact-section { padding: 110px 0 130px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
 <body>
-  <div class="site">
-    <header>
-      <a class="mark" href="/" aria-label="Qian Wang home">QW</a>
-      <nav aria-label="Primary navigation">
-        <a href="mailto:qian.wang@crelife.org.cn">Email</a>
-        <a href="https://github.com/qianw-cre" rel="me">GitHub</a>
-      </nav>
-    </header>
+  <header class="topbar">
+    <a class="logo" href="#home" aria-label="Qian Wang home">QW</a>
+    <nav class="topnav" aria-label="Primary navigation">
+      <a href="#about"><span>01.</span>About</a>
+      <a href="#profile"><span>02.</span>Profile</a>
+      <a href="#contact"><span>03.</span>Contact</a>
+    </nav>
+  </header>
 
-    <main>
-      <p class="eyebrow">Personal homepage</p>
-      <h1>Qian Wang</h1>
-      <p class="intro">Welcome to my personal website. I’m based in Beijing and can be reached directly using the contact details below.</p>
+  <aside class="side side-left" aria-label="Social links">
+    <a href="https://github.com/qianw-cre" rel="me">GitHub</a>
+  </aside>
 
-      <section class="contact" aria-labelledby="contact-heading">
-        <h2 class="contact-label" id="contact-heading">Contact</h2>
-        <div class="links">
-          <a class="email" href="mailto:qian.wang@crelife.org.cn">qian.wang@crelife.org.cn</a>
-          <a href="https://github.com/qianw-cre" rel="me">github.com/qianw-cre</a>
+  <aside class="side side-right" aria-label="Email">
+    <a href="mailto:qian.wang@crelife.org.cn">qian.wang@crelife.org.cn</a>
+  </aside>
+
+  <main class="shell">
+    <section class="hero" id="home">
+      <p class="kicker">Hi, my name is</p>
+      <h1>Qian Wang.</h1>
+      <h2>A clear home for my work and contact.</h2>
+      <p class="hero-copy">I’m based in Beijing and affiliated with CRE. This website is a simple place to find my public profile and get in touch.</p>
+      <a class="cta" href="mailto:qian.wang@crelife.org.cn">Get in touch</a>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title"><span>01.</span>About me</h2>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>Hello! I’m Qian Wang, based in Beijing, China.</p>
+          <p>I’m affiliated with CRE, and this page serves as my public home on the web. You can find my GitHub profile here or contact me directly by email.</p>
+          <p>For professional enquiries, write to <a class="accent-link" href="mailto:qian.wang@crelife.org.cn">qian.wang@crelife.org.cn</a>.</p>
         </div>
-      </section>
-    </main>
 
-    <footer>
-      <span>© 2026 Qian Wang</span>
-      <span>Beijing, China</span>
-    </footer>
-  </div>
+        <aside class="identity-card" aria-label="Profile summary">
+          <dl>
+            <div>
+              <dt>Affiliation</dt>
+              <dd>CRE</dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd>Beijing, China</dd>
+            </div>
+            <div>
+              <dt>GitHub</dt>
+              <dd>@qianw-cre</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section id="profile">
+      <h2 class="section-title"><span>02.</span>Profile</h2>
+      <div class="profile-grid">
+        <article class="profile-card">
+          <span class="number">01 / AFFILIATION</span>
+          <h3>CRE</h3>
+          <p>My current public organizational affiliation.</p>
+        </article>
+        <article class="profile-card">
+          <span class="number">02 / LOCATION</span>
+          <h3>Beijing</h3>
+          <p>Based in Beijing, China.</p>
+        </article>
+        <article class="profile-card">
+          <span class="number">03 / GITHUB</span>
+          <h3>qianw-cre</h3>
+          <p>Visit my public GitHub profile and repositories.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <p class="overline">03. What’s next?</p>
+      <h2>Get in touch</h2>
+      <p>My inbox is open for professional enquiries. Send an email and I’ll get back to you when I can.</p>
+      <a class="cta" href="mailto:qian.wang@crelife.org.cn">Say hello</a>
+    </section>
+  </main>
+
+  <footer>Designed and built for Qian Wang · 2026</footer>
 </body>
 </html>
