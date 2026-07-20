@@ -266,6 +266,281 @@
 
     <section id="contact">
       <h2>Contact</h2>
+      <a class="email-link" href="mailto:qian.wang@crelife.org.cn">qian.wang@crelife.org.cn</a>
+    </section>
+  </main>
+
+  <footer>Qian Wang · CRE</footer>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Professional homepage of Qian Wang at CRE">
+  <meta name="theme-color" content="#ffffff">
+  <title>Qian Wang | CRE</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #dfe5ec;
+      --paper: #ffffff;
+      --canvas: #f7f9fc;
+      --accent: #2457a7;
+      --accent-soft: #edf3fb;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover { color: #173c75; }
+
+    .site-header {
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      width: min(880px, calc(100% - 40px));
+      min-height: 68px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 650;
+      letter-spacing: .01em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: .9rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    main {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 76px 0 56px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: #111827;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.15rem, 5vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: -.025em;
+      line-height: 1.12;
+    }
+
+    .affiliation {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 32px 0 0;
+      color: #344054;
+      font-size: 1.04rem;
+    }
+
+    .intro p { margin: 0; }
+
+    section {
+      margin-top: 52px;
+      padding-top: 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 22px;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .details {
+      margin: 0;
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail-row:last-child { border-bottom: 0; }
+
+    dt {
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    dd {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .contact-copy {
+      max-width: 620px;
+      margin: 0;
+      color: #344054;
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 15px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid #cad9ef;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .email-link:hover {
+      color: #173c75;
+      background: #e3edf9;
+    }
+
+    footer {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 22px 0 32px;
+      color: #7a8594;
+      border-top: 1px solid var(--line);
+      font-size: .82rem;
+    }
+
+    @media (max-width: 560px) {
+      .header-inner {
+        width: min(100% - 28px, 880px);
+        min-height: 60px;
+      }
+
+      nav { gap: 14px; }
+
+      main {
+        width: min(100% - 32px, 760px);
+        padding-top: 52px;
+      }
+
+      .detail-row {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+
+      footer { width: min(100% - 32px, 760px); }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">Qian Wang</a>
+      <nav aria-label="Primary navigation">
+        <a href="#profile">Profile</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/qianw-cre" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <p class="eyebrow">Personal homepage</p>
+    <h1>Qian Wang</h1>
+    <p class="affiliation">CRE · Beijing, China</p>
+
+    <div class="intro">
+      <p>I am Qian Wang, based in Beijing, China, and currently affiliated with CRE. My work focuses on bioinformatics, with a particular interest in virtual cell research.</p>
+    </div>
+
+    <section id="profile">
+      <h2>Professional details</h2>
+      <dl class="details">
+        <div class="detail-row">
+          <dt>Name</dt>
+          <dd>Qian Wang</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Affiliation</dt>
+          <dd>CRE</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Location</dt>
+          <dd>Beijing, China</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Research interests</dt>
+          <dd>Bioinformatics · Virtual cells</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Work email</dt>
+          <dd><a href="mailto:qian.wang@crelife.org.cn">qian.wang@crelife.org.cn</a></dd>
+        </div>
+        <div class="detail-row">
+          <dt>GitHub</dt>
+          <dd><a href="https://github.com/qianw-cre" target="_blank" rel="noreferrer">qianw-cre</a></dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
       <p class="contact-copy">You are welcome to get in touch regarding research and professional matters.</p>
       <a class="email-link" href="mailto:qian.wang@crelife.org.cn">qian.wang@crelife.org.cn</a>
     </section>
