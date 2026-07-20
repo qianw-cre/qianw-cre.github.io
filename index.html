@@ -4,19 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Personal homepage of Qian Wang">
-  <meta name="theme-color" content="#07111f">
+  <meta name="theme-color" content="#f5f3ee">
   <title>Qian Wang</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #07111f;
-      --panel: rgba(13, 29, 48, .72);
-      --line: rgba(255, 255, 255, .11);
-      --text: #f7f9fc;
-      --muted: #9eacc0;
-      --blue: #78a7ff;
-      --mint: #65e6c4;
-      --shadow: 0 30px 90px rgba(0, 0, 0, .38);
+      color-scheme: light;
+      --paper: #f5f3ee;
+      --ink: #1d1d1b;
+      --muted: #6d6b65;
+      --line: #d9d6ce;
+      --accent: #285f4a;
+      --white: #fff;
     }
 
     * { box-sizing: border-box; }
@@ -27,282 +25,210 @@
       margin: 0;
       min-height: 100vh;
       min-height: 100svh;
-      overflow-x: hidden;
-      color: var(--text);
+      color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 12% 18%, rgba(48, 107, 255, .25), transparent 34rem),
-        radial-gradient(circle at 88% 82%, rgba(38, 213, 173, .17), transparent 32rem),
-        var(--bg);
+        linear-gradient(rgba(29, 29, 27, .026) 1px, transparent 1px),
+        var(--paper);
+      background-size: 100% 56px;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .28;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, black, transparent 82%);
-    }
-
-    .orb {
-      position: fixed;
-      width: 320px;
-      aspect-ratio: 1;
-      border: 1px solid rgba(120, 167, 255, .18);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .orb-one { top: -170px; right: -90px; }
-    .orb-two { bottom: -210px; left: -70px; width: 420px; }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      place-items: center;
+    .site {
+      width: min(920px, calc(100% - 48px));
       min-height: 100vh;
       min-height: 100svh;
-      padding: 32px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
     }
 
-    .card {
-      position: relative;
-      width: min(760px, 100%);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 32px;
-      background: linear-gradient(145deg, rgba(20, 41, 66, .88), var(--panel));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(22px);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 8%;
-      width: 54%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--blue), transparent);
-    }
-
-    .topbar {
+    header {
+      height: 88px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 26px;
       border-bottom: 1px solid var(--line);
     }
 
-    .brand {
+    .mark {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      color: var(--ink);
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: -.03em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: .86rem;
+      text-decoration: none;
+      transition: color .18s ease;
+    }
+
+    nav a:hover { color: var(--ink); }
+
+    main {
+      flex: 1;
+      display: grid;
+      align-content: center;
+      padding: 88px 0 104px;
+    }
+
+    .eyebrow {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #dbe6f6;
+      margin: 0 0 24px;
+      color: var(--accent);
       font-size: .76rem;
       font-weight: 700;
-      letter-spacing: .17em;
+      letter-spacing: .14em;
       text-transform: uppercase;
     }
 
-    .brand-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--mint);
-      box-shadow: 0 0 18px rgba(101, 230, 196, .8);
-    }
-
-    .availability {
-      color: var(--muted);
-      font-size: .78rem;
-    }
-
-    .content {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: clamp(28px, 6vw, 54px);
-      align-items: center;
-      padding: clamp(38px, 7vw, 66px);
-    }
-
-    .monogram {
-      position: relative;
-      display: grid;
-      place-items: center;
-      width: clamp(112px, 18vw, 148px);
-      aspect-ratio: 1;
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 38%;
-      color: #081422;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -.08em;
-      background: linear-gradient(145deg, #a9c6ff, #68e7c3);
-      box-shadow: 0 18px 55px rgba(71, 176, 213, .22);
-      transform: rotate(-4deg);
-    }
-
-    .monogram span { transform: rotate(4deg) translateX(-2px); }
-
-    .monogram::after {
+    .eyebrow::before {
       content: "";
-      position: absolute;
-      inset: 10px;
-      border: 1px solid rgba(7,17,31,.16);
-      border-radius: 34%;
-    }
-
-    .kicker {
-      margin: 0 0 10px;
-      color: var(--blue);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      width: 28px;
+      height: 1px;
+      background: currentColor;
     }
 
     h1 {
+      max-width: 720px;
       margin: 0;
-      font-size: clamp(3.1rem, 9vw, 6.5rem);
-      line-height: .9;
-      letter-spacing: -.07em;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 5vw, 3.25rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -.035em;
     }
 
     .intro {
-      max-width: 440px;
-      margin: 22px 0 0;
+      max-width: 590px;
+      margin: 26px 0 0;
       color: var(--muted);
-      font-size: clamp(.98rem, 2vw, 1.08rem);
-      line-height: 1.7;
+      font-size: clamp(1rem, 1.8vw, 1.12rem);
+      line-height: 1.75;
     }
 
-    .actions {
+    .contact {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 28px;
+      align-items: start;
+      max-width: 720px;
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-label {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .links {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 10px 28px;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 0 18px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      color: var(--text);
-      font-size: .92rem;
-      font-weight: 650;
+    .links a {
+      position: relative;
+      color: var(--ink);
+      font-size: .96rem;
+      font-weight: 600;
       text-decoration: none;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
 
-    .button-primary {
-      color: #07111f;
-      border-color: transparent;
-      background: linear-gradient(135deg, #a9c6ff, #69e5c3);
+    .links a::after {
+      content: "↗";
+      margin-left: 7px;
+      color: var(--accent);
+      font-size: .82em;
     }
 
-    .button-secondary { background: rgba(255,255,255,.045); }
+    .links a.email::after { content: "→"; }
 
-    .button:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,.25);
+    .links a:hover { color: var(--accent); }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+      border-radius: 2px;
     }
 
-    .button:focus-visible {
-      outline: 3px solid rgba(120, 167, 255, .42);
-      outline-offset: 4px;
-    }
-
-    .button svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-    }
-
-    .footer {
+    footer {
+      min-height: 72px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 20px 26px;
+      gap: 20px;
       border-top: 1px solid var(--line);
-      color: #7f90a6;
+      color: var(--muted);
       font-size: .76rem;
     }
 
     @media (max-width: 620px) {
-      .page { padding: 18px; }
-      .card { border-radius: 24px; }
-      .availability { display: none; }
-      .content {
+      .site { width: min(100% - 36px, 920px); }
+      header { height: 76px; }
+      nav { gap: 18px; }
+      main { padding: 72px 0 84px; }
+      h1 { font-size: clamp(2.35rem, 12vw, 2.8rem); }
+      .contact {
         grid-template-columns: 1fr;
-        justify-items: start;
-        padding: 38px 28px 42px;
+        gap: 16px;
+        margin-top: 50px;
       }
-      .monogram { width: 104px; }
-      h1 { font-size: clamp(3.6rem, 18vw, 5.4rem); }
-      .actions { width: 100%; }
-      .button { justify-content: center; width: 100%; }
-      .footer { flex-direction: column; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .links { flex-direction: column; align-items: flex-start; }
+      footer { align-items: flex-start; flex-direction: column; justify-content: center; padding: 18px 0; }
     }
   </style>
 </head>
 <body>
-  <div class="orb orb-one" aria-hidden="true"></div>
-  <div class="orb orb-two" aria-hidden="true"></div>
+  <div class="site">
+    <header>
+      <a class="mark" href="/" aria-label="Qian Wang home">QW</a>
+      <nav aria-label="Primary navigation">
+        <a href="mailto:qian.wang@crelife.org.cn">Email</a>
+        <a href="https://github.com/qianw-cre" rel="me">GitHub</a>
+      </nav>
+    </header>
 
-  <main class="page">
-    <article class="card" aria-labelledby="name">
-      <header class="topbar">
-        <div class="brand"><span class="brand-dot"></span>Personal homepage</div>
-        <div class="availability">Beijing · China</div>
-      </header>
+    <main>
+      <p class="eyebrow">Personal homepage</p>
+      <h1>Qian Wang</h1>
+      <p class="intro">Welcome to my personal website. I’m based in Beijing and can be reached directly using the contact details below.</p>
 
-      <div class="content">
-        <div class="monogram" aria-hidden="true"><span>QW</span></div>
-
-        <div>
-          <p class="kicker">Hello, I’m</p>
-          <h1 id="name">Qian<br>Wang</h1>
-          <p class="intro">Welcome to my corner of the web. For professional enquiries, feel free to get in touch.</p>
-
-          <nav class="actions" aria-label="Contact links">
-            <a class="button button-primary" href="mailto:qian.wang@crelife.org.cn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                <path d="m4 7 8 6 8-6"></path>
-              </svg>
-              qian.wang@crelife.org.cn
-            </a>
-
-            <a class="button button-secondary" href="https://github.com/qianw-cre" rel="me">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82c.85 0 1.71.12 2.51.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path>
-              </svg>
-              GitHub
-            </a>
-          </nav>
+      <section class="contact" aria-labelledby="contact-heading">
+        <h2 class="contact-label" id="contact-heading">Contact</h2>
+        <div class="links">
+          <a class="email" href="mailto:qian.wang@crelife.org.cn">qian.wang@crelife.org.cn</a>
+          <a href="https://github.com/qianw-cre" rel="me">github.com/qianw-cre</a>
         </div>
-      </div>
+      </section>
+    </main>
 
-      <footer class="footer">
-        <span>© 2026 Qian Wang</span>
-        <span>Designed with clarity and care.</span>
-      </footer>
-    </article>
-  </main>
+    <footer>
+      <span>© 2026 Qian Wang</span>
+      <span>Beijing, China</span>
+    </footer>
+  </div>
 </body>
 </html>
